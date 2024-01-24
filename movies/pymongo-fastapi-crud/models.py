@@ -1,12 +1,16 @@
-import uuid
 from typing import Optional, List
 from pydantic import BaseModel, Field, validator
 from pydantic.functional_validators import BeforeValidator
 from typing_extensions import Annotated
-import datetime
 
 
 PyObjectId = Annotated[str, BeforeValidator(str)]
+
+class MoviesNeo4J(BaseModel):
+    id: Optional[int]
+    released: int
+    tagline: str
+    title: str
 
 class Movie(BaseModel):
     
@@ -54,12 +58,6 @@ class Movie(BaseModel):
         if languages is None:
             return "No languages associated."
         return languages
-    
-    # @validator("released", pre=True)
-    # def validate_released_time(cls, released: datetime):
-    #     if released is None:
-    #         return "No release date specified."
-    #     return released
 
     @validator("directors", pre=True)
     def validate_directors(cls, directors: List[str]):
@@ -78,12 +76,6 @@ class Movie(BaseModel):
         if awards is None:
             return "No awards specified."
         return awards
-
-    # @validator("lastupdated", pre=True)
-    # def validate_lastupdated(cls, lastupdated: datetime):
-    #     if lastupdated is None:
-    #         return "No last updated information."
-    #     return lastupdated
 
     @validator("year", pre=True)
     def validate_year(cls, year: Optional[int]):
