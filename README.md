@@ -1,4 +1,4 @@
-# nosql-mongodb-no4j
+# nosql-mongodb-neo4j
 
 Voici le dépôt Git pour le TP sur les bases de données NoSQL de Sacha THUAULT, Léo PEIRO et Arthur FRANCOIS.
 
