@@ -29,7 +29,8 @@ def exemple_api():
 def get_movie_by_title(title: str = Path(..., title="Title")):
     decoded_title = unquote(title).replace("%20", " ")
     cypher_query = (
-        "MATCH (p1)-[r]->(m) WHERE (p1:Person) AND (m:Movie) AND m.title = $decoded_title AND r:REVIEWED RETURN m.title AS `Title`, collect(p1.name) AS `Reviewers`, r.rating AS `Ratings`"
+        "MATCH (p1)-[r]->(m) WHERE (p1:Person) AND (m:Movie) AND m.title = $decoded_title AND r:REVIEWED RETURN m.title AS `Title`, collect({ Reviewers: p1.name, Ratings: r.rating}) AS `Reviewers`"
+
     )
     result = run_neo4j_query(cypher_query, decoded_title=decoded_title)
     return result
