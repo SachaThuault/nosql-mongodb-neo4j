@@ -11,8 +11,8 @@ cd .\movies\pymongo-fastapi-crud\
 Puis saisissez les commandes suivantes dans le terminal associé à ce dossier : 
 
 ```
+python -m venv env-pymongo-fastapi-crud
 pip install -r requirements.txt
-python -m venv env-pymongo-fastapi-crud  
 python -m uvicorn main:app --reload
 ```
 
