@@ -12,6 +12,9 @@ Puis saisissez les commandes suivantes dans le terminal associé à ce dossier :
 
 ```
 python -m venv env-pymongo-fastapi-crud
+```
+Activez le venv
+```
 pip install -r requirements.txt
 python -m uvicorn main:app --reload
 ```
